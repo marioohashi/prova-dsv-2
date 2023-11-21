@@ -30,6 +30,37 @@ public class TarefaController : ControllerBase
         }
     }
 
+    // GET: api/tarefa/naoconcluidas
+    [HttpGet]
+    [Route("naoconcluidas")]
+    public IActionResult ListarNaoConlcuidas()
+    {
+        try
+        {
+            List<Tarefa> tarefas = _context.Tarefas.Include(x => x.Categoria).ToList();
+            return Ok(tarefas);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpGet]
+    [Route("concluidas")]
+    public IActionResult ListarConlcuidas()
+    {
+        try
+        {
+            List<Tarefa> tarefas = _context.Tarefas.Include(x => x.Categoria).ToList();
+            return Ok(tarefas);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     // POST: api/tarefa/cadastrar
     [HttpPost]
     [Route("cadastrar")]
@@ -46,6 +77,53 @@ public class TarefaController : ControllerBase
             _context.Tarefas.Add(tarefa);
             _context.SaveChanges();
             return Created("", tarefa);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    //PATCH api/tarefa/alterar
+    [HttpPatch]
+    [Route("alterar/{id}")]
+    public IActionResult Alterar([FromRoute] int id,
+        [FromBody] Tarefa tarefa)
+    {
+        try
+        {
+            Tarefa? tarefaCadastrada =
+                _context.Tarefas.FirstOrDefault(x => x.TarefaId == id);
+
+            if (tarefaCadastrada != null)
+            {
+
+                Categoria? categoria =
+                    _context.Categorias.Find(tarefa.CategoriaId);
+                if (categoria == null)
+                {
+                    return NotFound();
+                }
+
+                if (tarefaCadastrada.Status == "Não iniciada")
+                {
+                    tarefaCadastrada.Status = "Em andamento";
+                }
+                else if (tarefaCadastrada.Status == "Em andamento")
+                {
+                    tarefaCadastrada.Status = "Concluido";
+                }
+
+                tarefaCadastrada.Titulo = tarefa.Titulo;
+                tarefaCadastrada.Descricao = tarefa.Descricao;
+                tarefaCadastrada.CriadoEm = tarefa.CriadoEm;
+                tarefaCadastrada.Categoria = categoria;
+                tarefaCadastrada.CategoriaId = tarefa.CategoriaId;
+                _context.Tarefas.Update(tarefaCadastrada);
+                _context.SaveChanges();
+                return Ok();
+            }
+            return NotFound();
         }
         catch (Exception e)
         {

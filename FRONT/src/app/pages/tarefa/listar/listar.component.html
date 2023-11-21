@@ -1,0 +1,22 @@
+<h1>Tarefas</h1>
+
+<table *ngFor="let t of tarefas">
+  <thead>
+    <th>Titulo</th>
+    <th>Id</th>
+    <th>Status</th>
+    <th>Criado Em</th>
+    <th>Quantidade</th>
+    <th>Categoria</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ t.titulo }}</td>
+      <td>{{ t.tarefaId }}</td>
+      <td>{{ t.status }}</td>
+      <td>{{ t.criadoEm }}</td>
+      <td>{{ t.quantidade }}</td>
+      <td>{{ t.categoria }}</td>
+    </tr>
+  </tbody>
+</table>

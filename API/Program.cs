@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddDbContext<AppDataContext>(
-    options => options.UseSqlite("Data Source=COLOQUE_O_SEU_NOME_AQUI.db")
+    options => options.UseSqlite("Data Source=MARIO_OHASHI_DA_TRINDADE.db")
 );
 
 builder.Services.AddControllers();
@@ -22,7 +22,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(
+    c => c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

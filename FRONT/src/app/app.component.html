@@ -1,0 +1,34 @@
+<div class="container">
+  <nav>
+    <a routerLink="pages/tarefa/listar">
+      <div class="item">
+        <span> Listar Tarefas </span>
+      </div>
+    </a>
+    <a routerLink="pages/tarefa/cadastrar">
+      <div class="item">
+        <span> Cadastrar Tarefa </span>
+      </div>
+    </a>
+    <a routerLink="pages/tarefa/alterar">
+      <div class="item">
+        <span> Alterar Tarefa </span>
+      </div>
+    </a>
+    <a routerLink="pages/tarefa/concluidas">
+      <div class="item">
+        <span> Listar Tarefas Conlcuidas </span>
+      </div>
+    </a>
+    <a routerLink="pages/tarefa/naoconcluidas">
+      <div class="item">
+        <span> Listar Tarefas Não Conlcuidas </span>
+      </div>
+    </a>
+  </nav>
+  <div class="conteudo">
+    <p>div</p>
+    <router-outlet> </router-outlet>
+  </div>
+  <!-- Conteúdo -->
+</div>

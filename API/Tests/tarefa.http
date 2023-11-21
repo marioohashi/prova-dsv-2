@@ -3,6 +3,12 @@
 ### Listar Tarefas ###
 GET {{base_url}}/listar
 
+### Listar Tarefas Conlcuidas ###
+GET {{base_url}}/concluidas
+
+### Listar Tarefas Não Concluidas ###
+GET {{base_url}}/naoconcluidas
+
 ### Criar Tarefa ###
 POST {{base_url}}/cadastrar
 Content-Type: application/json
@@ -13,3 +19,14 @@ Content-Type: application/json
   "CategoriaId": 4
 }
 
+### PATCH Alterar ###
+PATCH {{base_url}}/alterar/1
+Content-Type: application/json
+
+{
+"tarefaId": 1,
+"titulo": "Concluir relatório",
+"descricao": "Terminar relatório para reunião",
+"criadoEm": "2023-11-27T18:37:42.005988",
+"categoriaId": 1
+}

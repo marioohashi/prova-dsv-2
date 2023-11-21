@@ -4,9 +4,9 @@ API
 - GET api/categoria/listar - Já está pronto
 - POST api/tarefa/cadastrar - Já está pronto
 - GET api/tarefa/listar - Já está pronto
-- PATCH api/tarefa/alterar
-- GET api/tarefa/naoconcluidas
-- GET api/tarefa/concluidas
+- PATCH api/tarefa/alterar - OK
+- GET api/tarefa/naoconcluidas -
+- GET api/tarefa/concluidas -
 
 FRONT
 
