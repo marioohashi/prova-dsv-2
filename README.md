@@ -10,7 +10,7 @@ API
 
 FRONT
 
-- Listar Tarefas pages/tarefa/listar
+- Listar Tarefas pages/tarefa/listar - OK
 - Cadastrar Tarefa pages/tarefa/cadastrar
 - Alterar Tarefa pages/tarefa/alterar
 - Listar Concluídas pages/tarefa/listarconcluidas
